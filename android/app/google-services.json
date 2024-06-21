@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1017295654876",
+    "project_id": "maag-47a0b",
+    "storage_bucket": "maag-47a0b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1017295654876:android:8a67b8a601f163958ac919",
+        "android_client_info": {
+          "package_name": "com.example.begin_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOtRzGnN1OovcO3ylRdMx859gxsoQBIQA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1017295654876:android:6db8af609a8fa0b98ac919",
+        "android_client_info": {
+          "package_name": "com.example.bun"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOtRzGnN1OovcO3ylRdMx859gxsoQBIQA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
