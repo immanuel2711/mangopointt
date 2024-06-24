@@ -10,7 +10,6 @@ import 'bluetooth/bluetooth_scan_page.dart';
 import '../../providers/user_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -31,9 +30,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mango Management', style: TextStyle(color: Color(0xffFFA62F))),
+        title: Text('Mango Management', style: TextStyle(color: Colors.orange)),
         actions: [
-
           Consumer<UserProvider>(
             builder: (context, userProvider, _) {
               final user = userProvider.user;
@@ -168,15 +166,10 @@ class _InwardPageState extends State<InwardPage> {
                           border: Border(bottom: BorderSide(color: Colors.green[500] ?? Colors.transparent)),
                         ),
                         children: [
-                          _buildTableCell(
-                              rowData['Lot No'] ?? 'N/A', rowData),
+                          _buildTableCell(rowData['Lot No'] ?? 'N/A', rowData),
                           _buildTableCell(rowData['Mango'] ?? 'N/A', rowData),
-                          _buildTableCell(
-                              rowData['Inward']?['Total Weight']?.toString() ??
-                                  'N/A',
-                              rowData),
-                          _buildTableCell(
-                              rowData['Inward Date'] ?? 'N/A', rowData),
+                          _buildTableCell(rowData['Inward']?['Total Weight']?.toString() ?? 'N/A', rowData),
+                          _buildTableCell(rowData['Inward Date'] ?? 'N/A', rowData),
                           _buildTableCell(rowData['Owner'] ?? 'N/A', rowData),
                         ],
                       );
@@ -252,6 +245,14 @@ class _InwardPageState extends State<InwardPage> {
 
   TableRow _buildTableRow(List<String> values, {Color? color}) {
     return TableRow(
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(
+            color: Colors.green,
+
+          ),
+        ),
+      ),
       children: [
         for (var value in values)
           Padding(
@@ -266,16 +267,9 @@ class _InwardPageState extends State<InwardPage> {
                     style: TextStyle(
                       fontSize: 16,
                       color: color ?? Colors.black,
-
                     ),
                   ),
-                  if (value != 'Owner')
-                    Container(
-                      margin: EdgeInsets.only(top: 4),
-                      height: 2,
-                      color: Colors.green[300],
-                      width: MediaQuery.of(context).size.width * 0.75,
-                    ),
+
                 ],
               ),
             ),

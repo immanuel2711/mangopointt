@@ -87,7 +87,7 @@ class InwardDetails extends StatelessWidget {
                     print('Document ID is null or not a string.');
                   }
                 },
-                child: Text('Proceed To Grading'),
+                child: Text('Proceed To Grading',style: TextStyle(color: Colors.white)),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,
                 ),

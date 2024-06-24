@@ -153,7 +153,7 @@ class _OutwardDetailsState extends State<OutwardDetails> {
                       ),
                     );
                   },
-                  child: Text('Dispatch'),
+                  child: Text('Dispatch',style: TextStyle(color: Colors.white)),
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
                 ),
               ],

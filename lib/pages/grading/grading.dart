@@ -151,7 +151,7 @@ class _GradingPageState extends State<GradingPage> {
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(
-            color: Colors.lightGreen,
+            color: Colors.green,
 
           ),
         ),

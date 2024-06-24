@@ -101,7 +101,7 @@ class _RipeningAndGradingDetailsState extends State<RipeningAndGradingDetails> {
                   onPressed: () {
                     _showBrixValueDialog(context, widget.lotNo, ripeningData);
                   },
-                  child: Text('Add Brix Value'),
+                  child: Text('Add Brix Value',style: TextStyle(color: Colors.white)),
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
                 ),
                 SizedBox(height: 8),
@@ -109,7 +109,7 @@ class _RipeningAndGradingDetailsState extends State<RipeningAndGradingDetails> {
                   onPressed: () {
                     _readyToDispatch(widget.lotNo);
                   },
-                  child: Text('Ready to Dispatch'),
+                  child: Text('Ready to Dispatch',style: TextStyle(color: Colors.white)),
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
                 ),
               ],

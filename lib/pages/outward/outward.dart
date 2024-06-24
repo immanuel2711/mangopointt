@@ -150,6 +150,14 @@ class _OutwardPageState extends State<OutwardPage> {
 
   TableRow _buildTableRow(List<String> values, {Color? color}) {
     return TableRow(
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(
+            color: Colors.green,
+
+          ),
+        ),
+      ),
       children: values
           .map(
             (value) => Padding(

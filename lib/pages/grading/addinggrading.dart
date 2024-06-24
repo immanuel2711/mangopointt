@@ -467,12 +467,16 @@ class _AddingGradingPageState extends State<AddingGradingPage> {
               SizedBox(height: 16),
               ElevatedButton(
                 onPressed: _addGradingData,
-                child: Text('Add Grading Data'),
+                child: Text('Add Grading Data',style: TextStyle(color: Colors.white)),
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
+
+
               ),
               SizedBox(height: 16),
               ElevatedButton(
                 onPressed: _showReviewDialog,
-                child: Text('Review Grading Details'),
+                child: Text('Review Grading Details',style: TextStyle(color: Colors.white)),
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
               ),
             ],
           ),

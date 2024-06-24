@@ -224,7 +224,7 @@ class _GradingDetailsState extends State<GradingDetails> {
                       ),
                     );
                   },
-                  child: Text('Add Grading Status'),
+                  child: Text('Add Grading Status',style: TextStyle(color: Colors.white)),
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
                 ),
                 ElevatedButton(
@@ -247,7 +247,7 @@ class _GradingDetailsState extends State<GradingDetails> {
                       print('Document ID is null or not a string.');
                     }
                   },
-                  child: Text('Proceed to Ripening'),
+                  child: Text('Proceed to Ripening',style: TextStyle(color: Colors.white)),
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
                 ),
               ],

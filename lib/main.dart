@@ -15,6 +15,7 @@ import 'package:bun/pages/inward/addinginward.dart';
 //import 'package:begin_app/signup.dart';
 //import 'package:begin_app/addinginward.dart';
 //import 'package:begin_app/home_page.dart';
+import 'package:bun/pages/Dashboard.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -100,7 +101,7 @@ class AuthGate extends StatelessWidget {
           );
         } else if (snapshot.hasData) {
           
-          return HomePage();
+          return MangoManagementDashboard();
         } else {
           
           return SignInPage();

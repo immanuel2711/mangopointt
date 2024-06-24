@@ -142,7 +142,7 @@ class _RipeningDetailsScreenState extends State<RipeningDetailsScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ripening Details'),
+        title: Text('Ripening Details',style: TextStyle(color: Colors.orange)),
         leading: IconButton(
           icon: Icon(Icons.close),
           onPressed: () {
@@ -214,7 +214,11 @@ class _RipeningDetailsScreenState extends State<RipeningDetailsScreen> {
               SizedBox(height: 16.0),
               ElevatedButton(
                 onPressed: _updateRipeningDetails,
-                child: Text('Submit', style: TextStyle(fontSize: _fontSize)),
+                child: Text('Submit', style: TextStyle(color: Colors.white)),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green,
+                )
+
               ),
             ],
           ),
