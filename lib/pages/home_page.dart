@@ -6,6 +6,7 @@ import 'inward/addinginward.dart';
 import 'inward/inward_details.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:bun/pages/dashboard.dart';
 import 'bluetooth/bluetooth_scan_page.dart';
 import '../../providers/user_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -30,32 +31,71 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 10, 39, 11),
         title: Text('Mango Management', style: TextStyle(color: Colors.orange)),
-        actions: [
-          Consumer<UserProvider>(
-            builder: (context, userProvider, _) {
-              final user = userProvider.user;
-              return user != null && user.photoURL != null
-                  ? CircleAvatar(
-                backgroundImage: NetworkImage(user.photoURL!),
-                radius: 20,
-              )
-                  : IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SignInPage()),
-                  );
-                },
-                icon: Icon(Icons.account_circle, size: 40, color: Color(0xffFFA62F)),
-              );
-            },
-          ),
-        ],
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          Consumer<UserProvider>(
+            builder: (context, userProvider, _) {
+              final user = userProvider.user;
+              return Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: user != null && user.photoURL != null
+                      ? CircleAvatar(
+                    backgroundImage: NetworkImage(user.photoURL!),
+                    radius: 20,
+                  )
+                      : TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                MangoManagementDashboard()),
+                      );
+                    },
+                    style: ButtonStyle(
+                      padding: MaterialStateProperty.all<EdgeInsets>(
+                        EdgeInsets.symmetric(vertical: 5, horizontal: 6),
+                      ),
+                      backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.green[700]!),
+                      shape: MaterialStateProperty.all<
+                          RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          side: BorderSide(color: Colors.red),
+                        ),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.description,
+                          size: 25,
+                          color: Colors.green[900],
+                        ),
+                        SizedBox(width: 10),
+                        Text(
+                          'Click here for everyday reports',
+                          style: TextStyle(
+
+                            fontSize: 16,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
           SizedBox(height: 30),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -67,7 +107,9 @@ class _HomePageState extends State<HomePage> {
                     text: 'Inward',
                     isSelected: _selectedIndex == 0,
                     onPressed: () => _onItemTapped(0),
-                    color: _selectedIndex == 0 ? Colors.green[900] : Colors.green[200],
+                    color: _selectedIndex == 0
+                        ? Colors.green[900]
+                        : Colors.green[200],
                   ),
                 ),
                 Expanded(
@@ -75,7 +117,9 @@ class _HomePageState extends State<HomePage> {
                     text: 'Grading',
                     isSelected: _selectedIndex == 1,
                     onPressed: () => _onItemTapped(1),
-                    color: _selectedIndex == 1 ? Colors.green[900] : Colors.green[200],
+                    color: _selectedIndex == 1
+                        ? Colors.green[900]
+                        : Colors.green[200],
                   ),
                 ),
                 Expanded(
@@ -83,7 +127,9 @@ class _HomePageState extends State<HomePage> {
                     text: 'Ripening',
                     isSelected: _selectedIndex == 2,
                     onPressed: () => _onItemTapped(2),
-                    color: _selectedIndex == 2 ? Colors.green[900] : Colors.green[200],
+                    color: _selectedIndex == 2
+                        ? Colors.green[900]
+                        : Colors.green[200],
                   ),
                 ),
                 Expanded(
@@ -91,7 +137,9 @@ class _HomePageState extends State<HomePage> {
                     text: 'Outward',
                     isSelected: _selectedIndex == 3,
                     onPressed: () => _onItemTapped(3),
-                    color: _selectedIndex == 3 ? Colors.green[900] : Colors.green[200],
+                    color: _selectedIndex == 3
+                        ? Colors.green[900]
+                        : Colors.green[200],
                   ),
                 ),
               ],
@@ -126,7 +174,8 @@ class InwardPage extends StatefulWidget {
 }
 
 class _InwardPageState extends State<InwardPage> {
-  final CollectionReference _inwardCollection = FirebaseFirestore.instance.collection('lots');
+  final CollectionReference _inwardCollection =
+  FirebaseFirestore.instance.collection('lots');
 
   @override
   Widget build(BuildContext context) {
@@ -137,7 +186,9 @@ class _InwardPageState extends State<InwardPage> {
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: StreamBuilder<QuerySnapshot>(
-              stream: _inwardCollection.where('Stage', isEqualTo: 'inward').snapshots(),
+              stream: _inwardCollection
+                  .where('Stage', isEqualTo: 'inward')
+                  .snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
                   return Center(child: CircularProgressIndicator());
@@ -163,13 +214,20 @@ class _InwardPageState extends State<InwardPage> {
                       rowData['id'] = doc.id;
                       return TableRow(
                         decoration: BoxDecoration(
-                          border: Border(bottom: BorderSide(color: Colors.green[500] ?? Colors.transparent)),
+                          border: Border(
+                              bottom: BorderSide(
+                                  color:
+                                  Colors.green[500] ?? Colors.transparent)),
                         ),
                         children: [
                           _buildTableCell(rowData['Lot No'] ?? 'N/A', rowData),
                           _buildTableCell(rowData['Mango'] ?? 'N/A', rowData),
-                          _buildTableCell(rowData['Inward']?['Total Weight']?.toString() ?? 'N/A', rowData),
-                          _buildTableCell(rowData['Inward Date'] ?? 'N/A', rowData),
+                          _buildTableCell(
+                              rowData['Inward']?['Total Weight']?.toString() ??
+                                  'N/A',
+                              rowData),
+                          _buildTableCell(
+                              rowData['Inward Date'] ?? 'N/A', rowData),
                           _buildTableCell(rowData['Owner'] ?? 'N/A', rowData),
                         ],
                       );
@@ -249,7 +307,6 @@ class _InwardPageState extends State<InwardPage> {
         border: Border(
           bottom: BorderSide(
             color: Colors.green,
-
           ),
         ),
       ),
@@ -269,7 +326,6 @@ class _InwardPageState extends State<InwardPage> {
                       color: color ?? Colors.black,
                     ),
                   ),
-
                 ],
               ),
             ),

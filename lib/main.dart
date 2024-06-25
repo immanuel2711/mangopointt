@@ -1,6 +1,8 @@
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/foundation.dart';
+import 'package:bun/pages/dashboard.dart';
 import 'package:bun/pages/home_page.dart';
 import 'package:bun/pages/auth/signup.dart';
 import 'package:bun/pages/auth/signin.dart';
@@ -9,13 +11,8 @@ import 'package:bun/providers/user_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:bun/pages/inward/addinginward.dart';
-//import 'package:begin_app/user_provider.dart';
-//import 'package:begin_app/inward.dart';
-//import 'package:begin_app/signin.dart';
-//import 'package:begin_app/signup.dart';
-//import 'package:begin_app/addinginward.dart';
-//import 'package:begin_app/home_page.dart';
-import 'package:bun/pages/Dashboard.dart';
+
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,6 +34,7 @@ void main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => UserProvider()),
+
       ],
       child: MyApp(),
     ),
@@ -46,7 +44,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Mango App',
@@ -95,15 +93,15 @@ class AuthGate extends StatelessWidget {
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          
+
           return const Scaffold(
             body: Center(child: CircularProgressIndicator()),
           );
         } else if (snapshot.hasData) {
-          
-          return MangoManagementDashboard();
+
+          return HomePage();
         } else {
-          
+
           return SignInPage();
         }
       },
