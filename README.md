@@ -1,3 +1,3 @@
-#Mango stock management app
+Mango stock management app
 
 
